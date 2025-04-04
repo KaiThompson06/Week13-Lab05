@@ -7,6 +7,16 @@ const chargeLevel = document.querySelector('#battery dd:nth-of-type(2) output');
 // STEP 1c: Grab the <progress> element inside the second <dd> element for a more graphical representation of the battery's state of charge (SOC)
 const chargeMeter = document.querySelector('#battery dd:nth-of-type(2) progress');
 
+// -------------------------Lab 5--------------------------------------------
+const robohashUrl = "https://robohash.org/";
+
+// -------------------------Lab 5--------------------------------------------
+
+
+
+
+
+
 /* Functions
 -------------------------------------------------- */
 // STEP 3a: Create the updateBatteryStatus() function
@@ -22,6 +32,24 @@ function updateBatteryStatus(battery) {
     chargeLevel.textContent = (battery.level * 100) + "%";
     chargeMeter.value = battery.level * 100;
 }
+// -------------------------Lab 5--------------------------------------------
+function getRobohash(batteryPercent) 
+{
+    // create url
+    let url = `${robohashUrl}${batteryPercent}.png`;
+    // create image element
+    let img = document.createElement('img');
+    // set image source to url
+    img.src = url;
+    // set image alt text to battery percent
+    img.alt = `${batteryPercent}% battery robohash`;
+    // add image to document body
+    document.body.appendChild(img);
+}
+
+
+
+// -------------------------Lab 5--------------------------------------------
 
 // STEP 2a: Using the getBattery() method of the navigator object, 
 //create a promise to retrieve the battery information
@@ -38,6 +66,8 @@ navigator.getBattery().then(battery => {
     battery.addEventListener("levelchange", function () {
         updateBatteryStatus(battery);
     })
+
+    getRobohash(battery.level * 100);
 })
 
 /* This script adapted from the excellent code examples found at https://www.w3.org/TR/battery-status/#examples and https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API */
