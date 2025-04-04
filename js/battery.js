@@ -66,8 +66,10 @@ navigator.getBattery().then(battery => {
     battery.addEventListener("levelchange", function () {
         updateBatteryStatus(battery);
     })
-
+// -------------------------Lab 5--------------------------------------------
     getRobohash(battery.level * 100);
+// -------------------------Lab 5--------------------------------------------
+
 })
 
 /* This script adapted from the excellent code examples found at https://www.w3.org/TR/battery-status/#examples and https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API */
