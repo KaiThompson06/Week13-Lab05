@@ -31,6 +31,11 @@ function updateBatteryStatus(battery) {
     // STEP 3c: Update the charge level
     chargeLevel.textContent = (battery.level * 100) + "%";
     chargeMeter.value = battery.level * 100;
+
+    // -------------------------Lab 5--------------------------------------------
+    // update the robohash image
+    getRobohash(battery.level * 100);
+// -------------------------Lab 5--------------------------------------------
 }
 // -------------------------Lab 5--------------------------------------------
 function getRobohash(batteryPercent) 
@@ -66,9 +71,6 @@ navigator.getBattery().then(battery => {
     battery.addEventListener("levelchange", function () {
         updateBatteryStatus(battery);
     })
-// -------------------------Lab 5--------------------------------------------
-    getRobohash(battery.level * 100);
-// -------------------------Lab 5--------------------------------------------
 
 })
 
